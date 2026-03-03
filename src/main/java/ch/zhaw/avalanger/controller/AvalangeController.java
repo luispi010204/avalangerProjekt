@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.avalanger.model.Avalange;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,17 +29,15 @@ public class AvalangeController {
 
 
     @PostMapping("")
-    public String postMethodName(@RequestBody Avalange  avalange) {
+    public ResponseEntity<String> postMethodName(@RequestBody Avalange  avalange) {
         
         
-        return "Avalange received: " + avalange.getCountry() + ", " + avalange.getState() + ", " + avalange.getDescription();
+        return new ResponseEntity<>("Avalange created: " + avalange.getCountry() + ", " + avalange.getState() + ", " + avalange.getDescription(), HttpStatus.CREATED);
+
+
+
+
     }
-    
-
-
-
-
-
     
     
 }
